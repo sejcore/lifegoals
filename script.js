@@ -1,4 +1,4 @@
-const DATA_URL = 'PASTE_YOUR_WEB_APP_URL_HERE';
+const DATA_URL = 'https://script.google.com/macros/s/AKfycbz83xpHoo_TdXnXO-0y8FftUoZGLmPTs--JFmCMXmdIwqjD8r_HSpIrIQ3lTfuVm5Ty/exec';
 
 let goals = [];
 let currentSort = 'category';
