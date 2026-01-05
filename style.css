@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: #000;
+  color: #e5e5e5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+nav button {
+  background: none;
+  border: 1px solid #333;
+  color: #e5e5e5;
+  padding: 6px 12px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  border-color: #777;
+}
+
+.goal {
+  display: grid;
+  grid-template-columns: 80px 1fr 200px 120px;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #222;
+  align-items: center;
+}
+
+.goal.completed {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.goal.recent {
+  border-left: 3px solid #4caf50;
+  padding-left: 13px;
+}
+
+.goal img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.goal-title {
+  font-size: 18px;
+}
+
+.goal-meta {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.countdown {
+  font-size: 14px;
+}
+
+.status {
+  text-align: right;
+  font-size: 12px;
+}
