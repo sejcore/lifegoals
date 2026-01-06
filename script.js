@@ -6,7 +6,7 @@ const PLACEHOLDER_IMAGE = 'assets/goals/placeholder.png';
 let allGoals = [];
 let activeCategory = 'All';
 
-// ---------- INIT ----------
+/* ---------- INIT ---------- */
 
 fetch(DATA_URL)
   .then(res => res.json())
@@ -16,7 +16,7 @@ fetch(DATA_URL)
     renderGoals();
   });
 
-// ---------- CATEGORY TABS ----------
+/* ---------- CATEGORY TABS ---------- */
 
 function buildCategoryTabs() {
   const categories = ['All', ...new Set(allGoals.map(g => g.category))];
@@ -39,22 +39,23 @@ function buildCategoryTabs() {
   });
 }
 
-// ---------- RENDER ----------
+/* ---------- RENDER ---------- */
 
 function renderGoals() {
   const container = document.getElementById('goals-container');
   container.innerHTML = '';
 
-  const filtered = activeCategory === 'All'
-    ? allGoals
-    : allGoals.filter(g => g.category === activeCategory);
+  const filtered =
+    activeCategory === 'All'
+      ? allGoals
+      : allGoals.filter(g => g.category === activeCategory);
 
   filtered.forEach(goal => {
     container.appendChild(createGoal(goal));
   });
 }
 
-// ---------- GOAL CARD ----------
+/* ---------- GOAL CARD ---------- */
 
 function createGoal(goal) {
   const wrapper = document.createElement('div');
@@ -64,7 +65,7 @@ function createGoal(goal) {
   img.src = goal.image
     ? `assets/goals/${goal.image}`
     : PLACEHOLDER_IMAGE;
-  img.onerror = () => img.src = PLACEHOLDER_IMAGE;
+  img.onerror = () => (img.src = PLACEHOLDER_IMAGE);
 
   const text = document.createElement('div');
 
@@ -89,10 +90,11 @@ function createGoal(goal) {
 
   text.append(title, meta, countdown, status);
   wrapper.append(img, text);
+
   return wrapper;
 }
 
-// ---------- TIME LOGIC ----------
+/* ---------- TIME LOGIC ---------- */
 
 function getDaysLeft(deadline) {
   const start = new Date('2026-01-01');
