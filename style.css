@@ -5,129 +5,95 @@
 body {
   margin: 0;
   background: #000;
-  color: #e5e5e5;
+  color: #eaeaea;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ---------- Page Frame ---------- */
+/* ---------- Header ---------- */
 
 header {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 36px 24px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 28px 20px 12px;
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   margin: 0;
 }
 
-/* ---------- Controls ---------- */
+/* ---------- Category Tabs ---------- */
 
-nav button {
-  background: none;
+#category-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px 20px;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 999px;
   border: 1px solid #333;
-  color: #e5e5e5;
-  padding: 7px 16px;
-  margin-left: 10px;
-  cursor: pointer;
   font-size: 13px;
-  letter-spacing: 0.2px;
+  color: #ccc;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-nav button:hover {
-  border-color: #777;
+.tab.active {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #555;
 }
 
-/* ---------- Goal Row ---------- */
+/* ---------- Goal Card ---------- */
 
 .goal {
   display: grid;
-  grid-template-columns: 144px 1fr 170px 90px;
-  gap: 28px;
-  padding: 28px 0;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 18px 20px;
   border-bottom: 1px solid #1f1f1f;
-  align-items: center;
 }
-
-.goal.completed {
-  opacity: 0.4;
-  filter: grayscale(1);
-}
-
-.goal.recent {
-  border-left: 3px solid #4caf50;
-  padding-left: 25px;
-}
-
-/* ---------- Image ---------- */
 
 .goal img {
-  width: 144px;
-  height: 144px;
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
   object-fit: cover;
-  border-radius: 10px;
   background: #111;
 }
 
 /* ---------- Text ---------- */
 
 .goal-title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.2px;
+  line-height: 1.35;
 }
 
 .goal-meta {
+  margin-top: 6px;
   font-size: 13px;
-  font-weight: 600;
-  margin-top: 10px;
   color: #bdbdbd;
 }
 
-/* ---------- Deadline ---------- */
+.goal-meta span {
+  margin-right: 12px;
+}
+
+/* ---------- Countdown ---------- */
 
 .countdown {
+  margin-top: 8px;
   font-size: 13px;
   color: #cfcfcf;
-  white-space: nowrap;
 }
 
 /* ---------- Status ---------- */
 
 .status {
+  margin-top: 6px;
   font-size: 12px;
-  text-align: right;
-  color: #9a9a9a;
-}
-
-/* ---------- Responsive ---------- */
-
-@media (max-width: 900px) {
-  .goal {
-    grid-template-columns: 120px 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
-  }
-
-  .goal img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .countdown,
-  .status {
-    text-align: left;
-  }
+  color: #888;
 }
