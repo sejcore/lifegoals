@@ -106,11 +106,24 @@ const QUOTES = [
 setRandomQuote();
 
 fetch(DATA_URL)
-  .then(res => res.json())
-  .then(data => {
+  .then(res => res.text())
+  .then(text => {
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      showError('Failed to load goals data.');
+      console.error('Invalid JSON:', text);
+      return;
+    }
+
     allGoals = data;
     buildCategoryTabs();
     renderGoals();
+  })
+  .catch(err => {
+    showError('Network error loading goals.');
+    console.error(err);
   });
 
 /* ---------- QUOTE ---------- */
@@ -169,7 +182,7 @@ function createGoal(goal) {
   img.src = goal.image
     ? `assets/goals/${goal.image}`
     : PLACEHOLDER_IMAGE;
-  img.onerror = () => img.src = PLACEHOLDER_IMAGE;
+  img.onerror = () => (img.src = PLACEHOLDER_IMAGE);
 
   const text = document.createElement('div');
 
@@ -201,4 +214,17 @@ function createGoal(goal) {
 /* ---------- TIME ---------- */
 
 function getDaysLeft(deadline) {
-  const start = new Date('2026-01-01
+  const start = new Date('2026-01-01');
+  const end = new Date(deadline);
+  const diff = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+
+  if (diff < 0) return `Overdue by ${Math.abs(diff)} days`;
+  return `${diff} days left`;
+}
+
+/* ---------- ERROR ---------- */
+
+function showError(message) {
+  document.getElementById('goals-container').innerHTML =
+    `<div style="padding:20px;color:#888;">${message}</div>`;
+}
